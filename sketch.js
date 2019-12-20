@@ -1,9 +1,12 @@
 var bird;
 var pipes = [];
+var score;
 function setup(){
     createCanvas(400,600);
     bird = new Bird();
     pipes.push(new Pipe());
+    score = 0;
+   
 }
 function draw(){
     background(0);
@@ -14,11 +17,15 @@ function draw(){
         pipes[i].show();
         pipes[i].update();
         if(pipes[i].hits(bird)){
+            createP(
+                "<h1>Score:</h1> "+ this.score);
             console.log('BirdHit');
+            noLoop();
         }
 
 
         if (pipes[i].offscreen()){
+            this.score +=1;
             pipes.splice(i,1);
         }
     }

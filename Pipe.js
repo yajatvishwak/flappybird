@@ -1,8 +1,11 @@
 function Pipe(){
-    this.top = random(height/2);
-    this.bottom = random(height/2);
+    var spacing = random(50, height / 2);
+    var centery = random(spacing, height - spacing);
+  
+    this.top = centery - spacing / 2;
+    this.bottom = height - (centery + spacing / 2);;
     this.x = width;
-    this.w = 20; rect(this.x,0,this.w,this.top);
+    this.w = 40; //rect(this.x,0,this.w,this.top);
     this.speed = 2;
     this.highlight = false;
 
@@ -31,7 +34,7 @@ function Pipe(){
                 return true;
             }
         }
-        this.highlight = false;
+    
         return false;
     }
 
